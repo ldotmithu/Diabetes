@@ -1,0 +1,8 @@
+artifacts_root: artifacts
+
+data_ingestion: 
+  root_dir: artifacts/data_ingestion
+  URL: https://github.com/ldotmithu/Dataset/raw/refs/heads/main/Diabetes%20(2).zip
+  local_data_path: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
+
