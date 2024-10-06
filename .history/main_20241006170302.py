@@ -43,7 +43,6 @@ except Exception as e:
 
 try:
     os.system('python app.py')
-    os.system('streamlit run app.py')    
     logging.info('web app runing')
 except Exception as e:
     logging.exception(e)

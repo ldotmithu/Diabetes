@@ -4,8 +4,8 @@ import joblib
 from pathlib import Path
 
 # Load the trained model and preprocessor
-model = joblib.load(Path('artifacts/model_train/model.joblib'))
-churn_preprocess = joblib.load(Path('artifacts/model_train/preprocess.joblib'))
+model = joblib.load(Path('artifacts\model_train\model.joblib'))
+churn_preprocess = joblib.load(Path('artifacts\model_train\preprocess.joblib'))
 
 # Create the Streamlit UI with tabs
 st.title("Diabetes Prediction Using Machine Learning")
@@ -17,13 +17,13 @@ with tabs[0]:
     st.header("Predict Diabetes Risk")
 
     # Input fields for the features
-    Pregnancies = st.number_input("Pregnancies", min_value=0, max_value=10, value=2)
-    Glucose = st.slider("Glucose", min_value=0, max_value=220, value=120)
-    BloodPressure = st.number_input("BloodPressure", min_value=10, max_value=211, value=80)
+    Pregnancies = st.number_input("Pregnancies", min_value=0, max_value=150, value=30)
+    Glucose = st.slider("Glucose", min_value=80, max_value=220, value=120)
+    BloodPressure = st.number_input("BloodPressure", min_value=40, max_value=211, value=80)
     SkinThickness = st.slider("SkinThickness", min_value=2, max_value=20, value=2)
-    Insulin = st.number_input("Insulin", value=0.0)
-    BMI = st.number_input("BMI", value=0.0)
-    DiabetesPedigreeFunction = st.number_input("DiabetesPedigreeFunction", value=0.0)
+    Insulin = st.number_input("Insulin")
+    BMI = st.number_input("BMI")
+    DiabetesPedigreeFunction = st.number_input("DiabetesPedigreeFunction")
     Age = st.slider("Age", min_value=10, max_value=90, value=20)
 
     # Create a DataFrame from input data
@@ -50,12 +50,7 @@ with tabs[0]:
         with st.spinner("Processing..."):
             try:
                 prediction = model.predict(input_data_preprocessed)[0]
-                
-                # Display appropriate message based on prediction
-                if prediction == 0:
-                    st.success("Prediction: **No Diabetes**")
-                else:
-                    st.success("Prediction: **Diabetes**")
+                st.success(f"Prediction: **{prediction}**")
             except Exception as e:
                 st.error(f"Error in prediction: {e}")
 

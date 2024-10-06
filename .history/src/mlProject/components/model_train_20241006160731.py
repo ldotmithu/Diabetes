@@ -54,8 +54,8 @@ class ModelTrain:
         logging.info('Model save')
         logging.info('Preprocess file save')
         
-        pred=log.predict(X_train)
-        logging.info(accuracy_score(y_train,pred))
+        pred=log.predict(X_test)
+        logging.info(accuracy_score(y_test,pred))
         
         
         

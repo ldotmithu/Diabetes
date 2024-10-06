@@ -17,9 +17,9 @@ with tabs[0]:
     st.header("Predict Diabetes Risk")
 
     # Input fields for the features
-    Pregnancies = st.number_input("Pregnancies", min_value=0, max_value=10, value=2)
-    Glucose = st.slider("Glucose", min_value=0, max_value=220, value=120)
-    BloodPressure = st.number_input("BloodPressure", min_value=10, max_value=211, value=80)
+    Pregnancies = st.number_input("Pregnancies", min_value=0, max_value=150, value=30)
+    Glucose = st.slider("Glucose", min_value=80, max_value=220, value=120)
+    BloodPressure = st.number_input("BloodPressure", min_value=40, max_value=211, value=80)
     SkinThickness = st.slider("SkinThickness", min_value=2, max_value=20, value=2)
     Insulin = st.number_input("Insulin", value=0.0)
     BMI = st.number_input("BMI", value=0.0)

@@ -46,7 +46,7 @@ class ModelTrain:
         X_train=preprocess_obj.fit_transform(X_train)
         X_test=preprocess_obj.transform(X_test)
         
-        log=LogisticRegression()
+        log=DecisionTreeClassifier()
         log.fit(X_train,y_train)
         
         joblib.dump(log,self.config.model_path)
@@ -54,8 +54,8 @@ class ModelTrain:
         logging.info('Model save')
         logging.info('Preprocess file save')
         
-        pred=log.predict(X_train)
-        logging.info(accuracy_score(y_train,pred))
+        pred=log.predict(X_test)
+        logging.info(accuracy_score(y_test,pred))
         
         
         

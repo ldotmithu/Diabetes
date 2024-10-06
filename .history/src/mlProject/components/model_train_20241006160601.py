@@ -1,8 +1,7 @@
 from mlProject.config.configuration import *
 from mlProject import logging
 import pandas as pd 
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression,RandomForestClassifier
 from sklearn.preprocessing import StandardScaler,PowerTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
@@ -54,8 +53,8 @@ class ModelTrain:
         logging.info('Model save')
         logging.info('Preprocess file save')
         
-        pred=log.predict(X_train)
-        logging.info(accuracy_score(y_train,pred))
+        pred=log.predict(X_test)
+        logging.info(accuracy_score(y_test,pred))
         
         
         
