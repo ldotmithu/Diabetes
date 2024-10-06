@@ -47,7 +47,7 @@ class ModelTrain:
         X_train=preprocess_obj.fit_transform(X_train)
         X_test=preprocess_obj.transform(X_test)
         
-        log=LogisticRegression(class_weight='balanced',n_jobs=-1,l1_ratio=0.2)
+        log=LogisticRegression(class_weight='balanced',C=2)
         log.fit(X_train,y_train)
         
         joblib.dump(log,self.config.model_path)

@@ -18,13 +18,13 @@ class ModelTrain:
         num_columns = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin',
                'BMI', 'DiabetesPedigreeFunction', 'Age']
 
-     
+        # Define the pipeline with PowerTransformer and StandardScaler
         num_pipeline = Pipeline([
-            ('power_transform', PowerTransformer(method='yeo-johnson')),  
-            ('scale', StandardScaler())  
+            ('power_transform', PowerTransformer(method='yeo-johnson')),  # PowerTransformer applied first
+            ('scale', StandardScaler())  # StandardScaler applied after PowerTransformer
         ])
 
-        
+        # Apply the pipeline using ColumnTransformer
         preprocess = ColumnTransformer([
             ('num_columns', num_pipeline, num_columns)
         ])
@@ -47,7 +47,7 @@ class ModelTrain:
         X_train=preprocess_obj.fit_transform(X_train)
         X_test=preprocess_obj.transform(X_test)
         
-        log=LogisticRegression(class_weight='balanced',n_jobs=-1,l1_ratio=0.2)
+        log=LogisticRegression()
         log.fit(X_train,y_train)
         
         joblib.dump(log,self.config.model_path)
