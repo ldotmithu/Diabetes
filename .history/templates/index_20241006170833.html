@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+</head>
+<body>
+    <h1>Diabetes Prediction Using Machine Learning</h1>
+    <form action="/predict" method="post">
+        <label for="Pregnancies">Pregnancies:</label>
+        <input type="number" name="Pregnancies" min="0" max="10" value="2"><br>
+
+        <label for="Glucose">Glucose:</label>
+        <input type="range" name="Glucose" min="0" max="220" value="120"><br>
+
+        <label for="BloodPressure">Blood Pressure:</label>
+        <input type="number" name="BloodPressure" min="10" max="211" value="80"><br>
+
+        <label for="SkinThickness">Skin Thickness:</label>
+        <input type="range" name="SkinThickness" min="2" max="20" value="2"><br>
+
+        <label for="Insulin">Insulin:</label>
+        <input type="number" name="Insulin" value="0.0"><br>
+
+        <label for="BMI">BMI:</label>
+        <input type="number" name="BMI" value="0.0"><br>
+
+        <label for="DiabetesPedigreeFunction">Diabetes Pedigree Function:</label>
+        <input type="number" name="DiabetesPedigreeFunction" value="0.0"><br>
+
+        <label for="Age">Age:</label>
+        <input type="number" name="Age" min="10" max="90" value="20"><br>
+
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>

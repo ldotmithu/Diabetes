@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import os 
 import numpy as np
 import pandas as pd
-from mlProject.pipeline.prediction_piprline import PredictionPipeline
+from mlProject.pipeline.prediction import PredictionPipeline
 
 app = Flask(__name__) # initializing a flask app
 
@@ -10,14 +10,10 @@ app = Flask(__name__) # initializing a flask app
 def homePage():
     return render_template("index.html")
 
-@app.route('/train', methods=['GET'])  # Route to train the pipeline
+@app.route('/train',methods=['GET'])  # route to train the pipeline
 def training():
-    try:
-        os.system("python main.py")
-        return render_template("results.html", prediction="Training Successful!")
-    except Exception as e:
-        print('Training failed with exception:', e)
-        return render_template("results.html", prediction="Training failed.")
+    os.system("python main.py")
+    return "Training Successful!"
 
 @app.route('/predict',methods=['POST','GET']) # route to show the predictions in a web UI
 def index():
@@ -34,7 +30,7 @@ def index():
             Age = float(request.form['Age'])
          
             data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
-            data = np.array(data).reshape(1, 8)
+            data = np.array(data).reshape(1, 6)
             
             obj = PredictionPipeline()
             predict = obj.predict(data)
